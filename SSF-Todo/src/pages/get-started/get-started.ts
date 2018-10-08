@@ -1,9 +1,9 @@
-import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AccountPage } from './../account/account';
 
 /**
- * Generated class for the RegistrationPage page.
+ * Generated class for the GetStartedPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,19 +11,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-registration',
-  templateUrl: 'registration.html',
+  selector: 'page-get-started',
+  templateUrl: 'get-started.html',
 })
-export class RegistrationPage {
+export class GetStartedPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  login(){
+    this.navCtrl.push(AccountPage)
+  }
   ionViewDidLoad() {
     
   }
-
-  onRegister() {
-    this.navCtrl.push(HomePage)
-  }
+  
 }

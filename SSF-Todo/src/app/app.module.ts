@@ -1,4 +1,3 @@
-import { RegistrationPage } from './../pages/registration/registration';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -13,6 +12,11 @@ import { ItemDetailsPage} from '../pages/item-details/item-details';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DataProvider } from '../providers/data/data';
+import { GetStartedPage } from './../pages/get-started/get-started';
+import { AuthProvider } from '../providers/auth/auth';
+import { AccountPage } from './../pages/account/account';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -21,12 +25,14 @@ import { DataProvider } from '../providers/data/data';
     ListPage,
     AddItemPage,
     ItemDetailsPage,
-    RegistrationPage
+    GetStartedPage,
+    AccountPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,13 +41,16 @@ import { DataProvider } from '../providers/data/data';
     ListPage,
     AddItemPage,
     ItemDetailsPage,
-    RegistrationPage,
+    GetStartedPage,
+    AccountPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
+    AuthProvider,
+    HttpClientModule
   ]
 })
 export class AppModule {}
