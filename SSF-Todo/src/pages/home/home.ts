@@ -4,13 +4,17 @@ import { AddItemPage } from '../add-item/add-item';
 import { ItemDetailsPage } from '../item-details/item-details';
 import { DataProvider } from '../../providers/data/data';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
+  public completedItems = [];
   public items = [];
+  
+
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public Data: DataProvider) {
 
     this.Data.getData().then((todos) => {
@@ -18,7 +22,11 @@ export class HomePage {
         this.items = todos;
       }
     });
-
+    this.Data.getCompleted().then((completedTodo)=>{
+      if(completedTodo) {
+        this.completedItems = completedTodo
+      }
+    })
   }
   ionViewDidLoad(){
    }
@@ -50,7 +58,11 @@ export class HomePage {
     });
   }
   removeItem(value) {
-    this.items = this.items.filter(item => item !==value)
+    this.items = this.items.filter(item => item !==value);
+    this.Data.save(this.items);
+    this.completedItems.push(value);
+    this.Data.saveCompleted(this.completedItems);
   }
+  
 }
 

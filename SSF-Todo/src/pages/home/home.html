@@ -5,9 +5,17 @@
     </button>
     <ion-title>ToDo List</ion-title>
   </ion-navbar>
+  <div padding>
+    <ion-segment [(ngModel)]="status">
+    <ion-segment-button value = "pending">Pending</ion-segment-button>
+    <ion-segment-button value = "completed">Completed</ion-segment-button>
+    <ion-segment-button value = "dueSoon">Due Soon</ion-segment-button>
+    </ion-segment>
+  </div>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding [(ngSwitch)]="status">
+  <div *ngSwitchDefault>
 <ion-list>
  <ion-card *ngFor="let item of items">
   <ion-row>
@@ -20,7 +28,51 @@
   </ion-row>
  </ion-card>
 </ion-list>
+</div>
+<div *ngSwitchCase="'pending'">
+    <ion-list>
+     <ion-card *ngFor="let item of items">
+      <ion-row>
+          <ion-col>
+              <ion-item><ion-checkbox checked="false" (click)="removeItem(item)"></ion-checkbox></ion-item>
+             </ion-col> 
+         <ion-col col-8>
+       <ion-item (click)="viewItem(item)">{{item.title}}</ion-item>
+      </ion-col>
+      </ion-row>
+     </ion-card>
+    </ion-list>
+    </div>
+<div *ngSwitchCase ="'completed'">
+    <ion-list>
+        <ion-card *ngFor="let item of completedItems">
+         <ion-row>
+             <ion-col>
+                 <ion-item><ion-checkbox checked="true" (click)="removeItem(item)"></ion-checkbox></ion-item>
+                </ion-col> 
+            <ion-col col-8>
+          <ion-item (click)="viewItem(item)">{{item.title}}</ion-item>
+         </ion-col>
+         </ion-row>
+        </ion-card>
+       </ion-list>
+</div>
+    <div *ngSwitchCase ="'dueSoon'">
+  <ion-list>
+   <ion-card *ngFor="let item of items">
+    <ion-row>
+        <ion-col>
+            <ion-item><ion-checkbox checked="false" (click)="removeItem(item)"></ion-checkbox></ion-item>
+           </ion-col> 
+       <ion-col col-8>
+     <ion-item (click)="viewItem(item)">{{item.title}}</ion-item>
+    </ion-col>
+    </ion-row>
+   </ion-card>
+  </ion-list>
+  </div>
 <ion-fab right bottom>
     <button ion-fab (click)="addItem()"><ion-icon name="add-circle"></ion-icon></button>
 </ion-fab>
+
 </ion-content>

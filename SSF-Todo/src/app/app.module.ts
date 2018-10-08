@@ -16,6 +16,8 @@ import { GetStartedPage } from './../pages/get-started/get-started';
 import { AuthProvider } from '../providers/auth/auth';
 import { AccountPage } from './../pages/account/account';
 import { HttpClientModule } from '@angular/common/http';
+import { DateProvider } from '../providers/date/date';
+
 
 
 @NgModule({
@@ -26,13 +28,16 @@ import { HttpClientModule } from '@angular/common/http';
     AddItemPage,
     ItemDetailsPage,
     GetStartedPage,
-    AccountPage
+    AccountPage,
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+  
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddItemPage,
     ItemDetailsPage,
     GetStartedPage,
-    AccountPage
+    AccountPage,
+
   ],
   providers: [
     StatusBar,
@@ -50,7 +56,8 @@ import { HttpClientModule } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
     AuthProvider,
-    HttpClientModule
+    HttpClientModule,
+    DateProvider
   ]
 })
 export class AppModule {}
