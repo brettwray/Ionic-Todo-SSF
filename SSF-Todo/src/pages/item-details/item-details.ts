@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavParams } from 'ionic-angular';
+import * as moment from '../../../node_modules/moment'
 
 @IonicPage()
 @Component({
@@ -11,14 +11,16 @@ export class ItemDetailsPage {
 
   title;
   description;
+  dateCreated;
  
   constructor(public navParams: NavParams){
- 
+
   }
  
   ionViewDidLoad() {
     this.title = this.navParams.get('item').title;
     this.description = this.navParams.get('item').description;
+    this.dateCreated = moment().format("dddd, MMMM Do YYYY");
   }
     
 

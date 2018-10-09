@@ -10,17 +10,16 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 export class AddItemPage {
   title: string;
   description: string;
-
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
   }
   ionViewDidLoad(){
- 
   }
 
   saveItem() {
     let newItem = {
-      title: this.title,
-      description: this.description
+      Title: this.title,
+      Description: this.description
     };
     this.view.dismiss(newItem);
   }
@@ -28,4 +27,5 @@ export class AddItemPage {
   close(){
     this.view.dismiss();
   }
+
 }

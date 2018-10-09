@@ -10,7 +10,7 @@ import { DataProvider } from '../../providers/data/data';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  public currentDate: any = '';
   public completedItems = [];
   public items = [];
   
@@ -29,6 +29,7 @@ export class HomePage {
     })
   }
   ionViewDidLoad(){
+
    }
   
    addItem(){
@@ -44,7 +45,6 @@ export class HomePage {
     });
  
     addModal.present();
- 
   }
 
 

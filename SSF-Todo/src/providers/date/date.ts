@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import * as moment  from '../../../node_modules/moment';
 /*
   Generated class for the DateProvider provider.
 
@@ -10,8 +10,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DateProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello DateProvider Provider');
-  }
+  now = moment();
 
+  constructor(public http: HttpClient) {
+    
+  }
 }

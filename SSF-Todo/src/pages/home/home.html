@@ -18,7 +18,8 @@
   <div *ngSwitchDefault>
 <ion-list>
  <ion-card *ngFor="let item of items">
-  <ion-row>
+     <ion-card-header>
+    <ion-row>
       <ion-col>
           <ion-item><ion-checkbox checked="false" (click)="removeItem(item)"></ion-checkbox></ion-item>
          </ion-col> 
@@ -26,6 +27,9 @@
    <ion-item (click)="viewItem(item)">{{item.title}}</ion-item>
   </ion-col>
   </ion-row>
+</ion-card-header>
+<ion-card-content>{{item.description}}</ion-card-content>
+<ion-card-content>This item was added: {{item.dateCreated}}</ion-card-content>
  </ion-card>
 </ion-list>
 </div>
